@@ -1,5 +1,5 @@
 ---
-title: 虎书笔记——Ray Tracing
+title: 虎书笔记——Chapter4：Ray Tracing
 tags:
   - 图形学
   - 虎书

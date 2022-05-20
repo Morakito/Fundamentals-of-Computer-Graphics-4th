@@ -1,5 +1,5 @@
 ---
-title: 虎书笔记——Raster Image
+title: 虎书笔记——Chapter3：Raster Image
 tags:
   - 图形学
   - 虎书

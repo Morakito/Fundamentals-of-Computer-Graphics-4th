@@ -1,5 +1,5 @@
 ---
-title: 虎书笔记——Miscellaneous Math
+title: 虎书笔记——Chapter2：Miscellaneous Math
 tags:
   - 图形学
 categories:

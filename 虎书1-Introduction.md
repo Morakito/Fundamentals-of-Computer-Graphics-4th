@@ -1,5 +1,5 @@
 ---
-title: 虎书笔记——Introduction
+title: 虎书笔记——Chapter1：Introduction
 tags:
   - 图形学
 categories:
