@@ -11,3 +11,10 @@ date: 2022-04-21 10:01:45
 # 光线追踪
 
 计算机图形学的基本任务之一就是*渲染*三维物体：
+
+$$
+\mathbf{a}
+$$
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTUyODQ3ODU2MV19
+-->
