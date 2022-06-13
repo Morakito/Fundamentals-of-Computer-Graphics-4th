@@ -18,7 +18,7 @@ date: 2022-04-21 10:01:45
 > 在一个光线追踪渲染器中，是可以很容易计算场景中的阴影和反射的，但是这对于对象顺序渲染来说则是很困难的。
 > **批注：**这里所说的对象顺序渲染的一个具体例子是前向渲染(Forward Rendering)，这是一个逐物体逐光源的渲染过程；图像顺序渲染的一个具体例子是延迟渲染(Deferred Rendering)，这是一个逐像素的过程，在光栅化阶段会将所需要的场景物体信息记录在G Bffer中，然后再进行光照计算。
 
-![图4.1](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-3/202206021205506.png)
+![图4.1](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-4/202206032304477.png)
 > **图4.1**：光线在场景中进行“追踪”，第一个被光线击中的物体就是通过屏幕像素所看到的物体。在图中的例子中，三角形$T_2$就是通过像素所看到的物体。
 
 光线追踪是一种用于渲染3D场景的图像顺序渲染算法，我们将第一个介绍它，这是因为它不需要开发其他的一些用于对象顺序渲染的数学工具也可以完成渲染任务。
@@ -45,3 +45,17 @@ for each pixel do
 
 ## 4.2透视
 
+在计算机出现的几百年前，艺术家们研究了如何使用2D绘图或者绘画来表现3D物体和场景的问题，照片也是通过2D图像来表现3D场景。虽然有很多非常规的手段来生成图像，如立体绘图、鱼眼透镜（图4.2）、外置相机等，但是对于艺术、摄影以及计算机图形学而言，它们的标准方法都是*线性透视(linear perspective)*，它将3D物体投影到一个*图像平面*上，同时保证场景中的直线被投影到平面上之后依然是直线。
+
+![图4.2](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-4/202206032304765.png)
+> **图4.2**：通过一个鱼眼透镜生成的图像并不是线性透视的。该照片由Philip Greenspun提供。
+
+最简单的投影类型是*平行投影（parallel projection）*，将3D点沿着投影方向进行移动，直到它落在图像平面上，通过这种方法将一个3D点映射成2D点（图4.3-图4.4）。用这种方法生成的视图取决于投影方向和图像平面的选择，若图像平面和视线方向相垂直，则这种投影叫做*正交投影（orthographic）*，反之叫做斜轴投影（oblique）。
+
+![图4.3](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-4/202206032305267.png)
+> **图4.3**：当投影线相互平行且垂直于图像平面时，形成的视图叫做正交投影。
+
+![图4.4](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-4/202206032308076.png)
+> **图4.4**：图像平面和投影方向成一定角度的平行投影叫做斜轴投影（如右图所示）。在透视投影中，所有的投影线都会相交于观测点，而不是相互平行（如左图所示）。图示中的透视投影并不是斜轴投影，这是因为穿过图像平面中心的投影线依然垂直于图像平面。
+
+平行投影常常用于机械和建筑绘图，因为它保持了平行线相互平行的特点，且保持了和图像平面平行的平面物体的大小和形状。
