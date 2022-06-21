@@ -14,7 +14,11 @@ date: 2022-04-21 10:01:45
 ## 2.1 集合和映射
 
 映射（也叫做函数）是数学和编程的基础概念。就像程序中的一个函数一样，数学中的映射将一种类型的参数映射（返回）到一个特定类型的对象。在编程中我们常用"类型"（type）这个词，而在数学中，我们会将其定义为集合（set）。当我们有一个对象，并且它是集合中的一个成员时，我们使用$\in$这个符号，例如：
-$$a \in \mathbf{S},$$
+
+$$
+a \in \mathbf{S},
+$$
+
 它被读作“$a$属于集合$\mathbf{S}$”。对于给定的任意两个集合$\mathbf{A}$和$\mathbf{B}$，我们通过笛卡儿积来创建第三个集合，记作$\mathbf{A} \times \mathbf{B}$。集合$\mathbf{A} \times \mathbf{B}$包含了所有可能的有序对$(a,b)$，其中$a \in \mathbf{A},b \in \mathbf{B}$。为了简化，我们使用$\mathbf{A^2}$来指代$\mathbf{A} \times \mathbf{A}$。我们可以扩展笛卡尔积，使用三个集合来创建一个包含所有可能的有序三元组的集合，或者是来自任意n个集合的有序n元组。
 常用的集合包括：
 
@@ -26,9 +30,17 @@ $$a \in \mathbf{S},$$
 - $\mathbb{S^2}$：单位球体上3D点（$\mathbb{R^3}$中的点）的集合
 
 我们注意到虽然$\mathbf{S^2}$是由三维空间中的点组成的，但是它们位于一个由两个参数化变量决定的曲面上，因此它也可以被视为一个二维集合。使用一个箭头和冒号来作为映射的标记，例如：
-$$f : \mathbb{R} \mapsto \mathbb{Z} $$
+
+$$
+f : \mathbb{R} \mapsto \mathbb{Z}
+$$
+
 你可以读作：有一个函数$f$将一个实数作为输入并映射成一个整数。在这个表达式中，箭头左边的集合叫做函数的定义域（domain），箭头右边的集合叫做目标域（target）。计算机程序员可能更熟悉一下的表述：这是一个叫做f的函数，它有一个实数参数并返回一个整数。换言之，上面的集合表示法和常用的编程表示法是等价的：
-$$integer \nobreakspace f(real) \leftarrow equivalent \rightarrow f : \mathbb{R} \mapsto \mathbb{Z}$$
+
+$$
+integer \nobreakspace f(real) \leftarrow equivalent \rightarrow f : \mathbb{R} \mapsto \mathbb{Z}
+$$
+
 即冒号-箭头表示法可以被认为是一种编程语法，就是这么简单。
 点$f(a)$被称为$a$的像，集合$A$（定义域的子集）的像是目标域的子集，即包含所有集合$A$中所有点的像。整个定义域的像被称为函数的值域。
 
@@ -45,7 +57,11 @@ $$integer \nobreakspace f(real) \leftarrow equivalent \rightarrow f : \mathbb{R}
 ### 2.1.3 对数
 
 虽然不像在计算机出现之前那么普遍，但是对数在带有指数项的方程问题中很有用。根据定义，每一个指数都有一个底数$a$，$log$以$a$为底，$x$的对数写作$\log_a x$，它被定义成“为了得到$x$，必须增大$a$的指数”，即：
-$$y = log_a x \iff a^y = x$$
+
+$$
+y = log_a x \iff a^y = x
+$$
+
 注意，以$a$为底的对数函数和$a$的幂函数互为逆函数，这个基本定义有以下推论：
 
 $$
@@ -57,30 +73,48 @@ log_a x = log_a b log_b x.
 $$
 
 当我们对对数运算应用微积分的时候，特殊数字$e = 2.718...$会经常出现。以$e$为底的对数被成为自然对数，我们常用$\ln$来表示它：
-$$\ln x \equiv log_e x$$
+
+$$
+\ln x \equiv log_e x
+$$
+
 注意，符号“$\equiv$”读作“在定义上是等价的”。类似于$\pi$，特殊数字$e$在很多场景都会出现。在许多情况下，除了使用特殊底数$e$之外，还会使用其他特殊的底数来进行操作，并且在符号中省略了底数如$\log x$。举个例子，天文学家经常使用10作为底数，理论计算机学家通常使用2作为底数。由于计算机图形学借鉴了很多领域中的技术，因此我们会避免这种简略的表达方式。
 对数和指数的导数说明了为什么自然对数是“自然”的：
+
 $$
 \frac{d}{dx}log_a x = \frac{1}{x \ln a}; \\[3mm]
 \frac{d}{dx}a^x = a^x \ln a.
 $$
+
 只有当$a = e$的时候，上面的常数乘法才是一致的。
 
 ## 2.2 求解二次方程
 
 一个一元二次方程有以下形式：
-$$Ax^2 + Bx + C = 0$$
+$$
+Ax^2 + Bx + C = 0
+$$
 方程中的x是一个未知实数，$A，B，C$是已知常数。如果你想到一个二维xy坐标系和$y = Ax^2 + Bx + C$，那么原方程的解就是函数图像与x轴相交点的$x$值。由于$y = Ax^2 + Bx + C$是一条抛物线，因此根据抛物线和x轴的相交情况（未经过，掠过，穿过），原方程有0个，1个或者2个解三种情况。
 为了求出该二次方程的解析解，我们首先在等式两边都除以$A$：
-$$x^2 + \frac{B}{A}x + \frac{C}{A} = 0$$
+$$
+x^2 + \frac{B}{A}x + \frac{C}{A} = 0
+$$
 然后将其变形为完全平方的形式：
-$$(x + \frac{B}{2A})^2 - \frac{B^2}{4A^2} + \frac{C}{A} = 0$$
+$$
+(x + \frac{B}{2A})^2 - \frac{B^2}{4A^2} + \frac{C}{A} = 0
+$$
 将常数项移动到等式右边，并进行开方运算：
-$$x + \frac{B}{2A} = \pm \sqrt{\frac{B^2}{4A^2} - \frac{C}{A}}$$
+$$
+x + \frac{B}{2A} = \pm \sqrt{\frac{B^2}{4A^2} - \frac{C}{A}}
+$$
 等式两边同时减去$B/(2A)$，然后进行通分、合并同类项：
-$$x = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A} \tag{2.1}$$
+$$
+x = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A} \tag{2.1}
+$$
 这里的符号“$\pm$”代表方程有两个解，一个是正号，另一个是负号，如$3 \pm 1$的结果是2或4。观察等式，我们可以发现决定方程实数解个数的项是：
-$$D \equiv B^2 - 4AC$$
+$$
+D \equiv B^2 - 4AC
+$$
 这叫做二次方程的判别式。如果$D > 0$，则方程有两个实数解（也叫做根）；如果$D = 0$，则方程只有一个实数解（两个相等的根）；如果$D < 0$，则方程没有实数解。
 举个例子，$x=-1，x=-2$是方程$2x^2 + 6x + 4 = 0$的两个根，而方程$x^2 + x + 1 = 0$则没有实数解。它们的判别式分别是$D=4$和$D=-3$，这符合我们对解数量的预期。在程序中，可以先检查判别式D的值，如果D是负数的话，可以直接返回无解。
 
@@ -101,7 +135,9 @@ $$
 ### 2.3.2 三角函数
 
 给定直角三角形的三条边长$a,o,h$，其中h是最长边（又叫做弦，是直角的对边）的长度。根据勾股定理，有以下重要关系：
-$$a^2 + o^2 = h^2$$
+$$
+a^2 + o^2 = h^2
+$$
 
 ![图2.7](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-2/202204241847644.png  "图2.7")
 
@@ -154,10 +190,10 @@ $$
 \sin(2A) = 2\sin A \cos A \\[1mm]
 \cos(A + B) = \cos A \cos B - \sin A \sin B \\[1mm]
 \cos(A - B) = \cos A \cos B + \sin A \sin B \\[1mm]
-\cos(2A) = \cos^A - \sin^A \\[1mm]
+\cos(2A) = \cos^2 A - \sin^2 A \\[1mm]
 \tan(A + B) = \frac{\tan A + \tan B}{1 - \tan A \tan B} \\[2mm]
 \tan(A - B) = \frac{\tan A - \tan B}{1 + \tan A \tan B} \\[2mm]
-\tan(2A) = \frac{2\tan A}{1 - \tan^A} \\[1mm]
+\tan(2A) = \frac{2\tan A}{1 - \tan^2 A} \\[1mm]
 $$
 
 **半角恒等式：**
@@ -251,17 +287,21 @@ $$
 $$
 点乘运算和实数运算一样，都遵循结合律和分配律：
 $$
-\mathbf{a} \cdot \mathbf{b} = \mathbf{b} \cdot \mathbf{a} \\
-\mathbf{a} \cdot (\mathbf{b} + \mathbf{c}) = \mathbf{a} \cdot \mathbf{b} + \mathbf{a} \cdot \mathbf{c} \\
+\mathbf{a} \cdot \mathbf{b} = \mathbf{b} \cdot \mathbf{a} \\[1mm]
+\mathbf{a} \cdot (\mathbf{b} + \mathbf{c}) = \mathbf{a} \cdot \mathbf{b} + \mathbf{a} \cdot \mathbf{c} \\[1mm]
 (k\mathbf{a}) \cdot \mathbf{b} = \mathbf{a} \cdot (k\mathbf{b}) = k\mathbf{a} \cdot \mathbf{b}\tag{2.6}
 $$
 如果二维向量$\mathbf{a}$和$\mathbf{b}$用笛卡尔坐标系表示，那么我们可以使用$\mathbf{x} \cdot \mathbf{x} = \mathbf{y} \cdot \mathbf{y} = 1, \mathbf{x} \cdot \mathbf{y}=0$来推导其点乘结果：
-$$\begin{aligned}
+$$
+\begin{aligned}
 \mathbf{a \cdot b} &= (x_a \mathbf{x} + y_a \mathbf{y}) \cdot  (x_b \mathbf{x} + y_b \mathbf{y}) \\
 &=x_a x_b(\mathbf{x \cdot x}) + x_a y_b(\mathbf{x \cdot y}) + x_b y_a(\mathbf{y \cdot x}) + y_a y_b(\mathbf{y \cdot y}) \\
 &= x_a x_b + y_a y_b
-\end{aligned}$$
+\end{aligned}
+$$
+
 类似的，在三维空间中：
+
 $$
 \mathbf{a \cdot b} = x_a x_b + y_a y_b + z_a z_b
 $$
@@ -308,13 +348,15 @@ $$
 \mathbf{a \times b} = -\mathbf{b \times a}
 $$
 在笛卡尔坐标系中，我们可以使用显式展开来计算向量的叉乘：
-$$\begin{aligned}
+$$
+\begin{aligned}
 \mathbf{a \times b} &= (x_a \mathbf{x} + y_a \mathbf{y} + z_a \mathbf{z}) \times (x_b \mathbf{x} + y_b \mathbf{y} + z_b \mathbf{z}) \\
 &=x_ax_b\mathbf{x \times x} + x_ay_b\mathbf{x \times y} + x_az_b\mathbf{x \times z} \\
 &y_ax_b\mathbf{y \times x} + y_ay_b\mathbf{y \times y} + y_az_b\mathbf{y \times z} \\
 &z_ax_b\mathbf{z \times x} + z_ay_b\mathbf{z \times y} + z_az_b\mathbf{z \times z} \\
 &=(y_az_b - z_ay_b)\mathbf{x} + (z_ax_b - x_az_b)\mathbf{y} + (x_ay_b - y_ax_b)\mathbf{z} \tag{2.7}
-\end{aligned}$$
+\end{aligned}
+$$
 写成坐标形式即：
 $$
 \mathbf{a \times b} = (y_az_b - z_ay_b, z_ax_b - x_az_b, x_ay_b - y_ax_b) \tag{2.8}
@@ -365,10 +407,12 @@ $$
 u_b\mathbf{u} + v_b\mathbf{v} + w_b\mathbf{w} =\mathbf{b}
 $$
 同时点乘运算会将$u_b$坐标单独隔离出来：
-$$\begin{aligned}
+$$
+\begin{aligned}
 \mathbf{u \cdot b} &=  u_b\mathbf{(u \cdot u)} + v_b\mathbf{(u \cdot v)} + w_b\mathbf{(u \cdot w)} \\
 &=u_b
-\end{aligned}$$
+\end{aligned}
+$$
 由于$\mathbf{u-v-w}$相互垂直，因此上述表达式成立。
 在6.2.1和6.5章中，我们将讨论使用矩阵来管理坐标变换。
 
@@ -422,7 +466,9 @@ $$
 ### 2.5.1 二维隐式曲线
 
 从直觉上来看，曲线是不抬笔在纸上画出来的一系列点的集合。描述曲线最常用的方式是*隐式方程*，二维隐式方程有以下的形式：
-$$f(x, y) = 0$$
+$$
+f(x, y) = 0
+$$
 函数$f(x, y)$返回一个实数值，使得方程值为0的点$(x, y)$在曲线上，使得方程值不为0的点$(x, y)$都不在曲线上。举个例子，假设$f(x, y)$是：
 $$
 f(x, y) = (x - x_c)^2 + (y - y_C)^2 - r^2 \tag{2.9}
@@ -435,9 +481,13 @@ $$
 $$
 如果将上述方程代数展开，将会获得等式(2.9)，但是这样可以更容易通过在几何意义上来“阅读”方程，从而看出这是一个描述圆的方程。它可以解读成，“在圆上的点$\mathbf{p}$满足以下性质：从$\mathbf{c}$到$\mathbf{p}$的向量点乘自身会的到值$r^2$”，因为一个向量点乘自身就是它自己长度的平方；或者我们也可以这样解读，“在圆上的点$\mathbf{p}$满足以下性质：从$\mathbf{c}$到$\mathbf{p}$的向量模长的平方为$r^2$”。
 更好的是，我们观察到长度的平方刚好是从$\mathbf{c}$到$\mathbf{p}$距离的平方，它说明了：
-$$\Vert \mathbf{p - c} \Vert^2 - r^2 = 0$$
+$$
+\Vert \mathbf{p - c} \Vert^2 - r^2 = 0
+$$
 当然，它也说明了：
-$$\Vert \mathbf{p - c} \Vert - r = 0$$
+$$
+\Vert \mathbf{p - c} \Vert - r = 0
+$$
 上述表达式可以解读成“点$\mathbf{p}$是到圆心$\mathbf{c}$距离为$r$的点”，这和其他对于圆的定义一样好。这说明向量化的方程通常比具有$x, y$的全笛卡尔形式表现出更好的几何属性和直觉。因此在可能的情况下，通常都建议使用向量形式。除此之外，你可以在代码中为专门向量设置一个类，当使用向量形式的时候，代码会变得更加整洁。面向向量的等式通常在实现中也不容易出错：一旦你在代码中实现并调试好了向量类型之后，对于$x, y, z$的复制错误将不复存在。你需要花费一点时间来熟悉这些方程中的向量，但是一旦你熟悉了它，它会给你带来很大的汇报。
 
 ### 2.5.2 二维梯度
@@ -491,14 +541,22 @@ $$
 #### 隐式二维线条
 
 直线的截距式方程有如下熟悉的形式：
-$$y = mx + b \tag{2.13}$$
+$$
+y = mx + b \tag{2.13}
+$$
 它可以很容易的被转换为隐式方程的形式：
-$$y - mx - b = 0 \tag{{2.14}}$$
+$$
+y - mx - b = 0 \tag{2.14}
+$$
 这里的$m$是斜率（上升与移动的比值），$b$是直线和$y$轴交点，通常被叫做截距。这条线同样分割了整个二维平面，但是在直觉上更符合“上下”之分，而不是“内外”之分。
 由于我们可以将隐式方程和任意常量相乘而不改变它的零点，即对于任意不为0的$k$而言，$kf(x, y) = 0$表示的是同一条直线。这允许一条直线具有几种隐式形式，例如：
-$$2y - 2mx - 2b = 0$$
+$$
+2y - 2mx - 2b = 0
+$$
 截距式有时候会遇到一些尴尬的情况，其中一个原因是它不能表示所有的直线，比如对于$x = 0$这条直线来说，它的$m$是无穷大的。因此，使用直线的一般式是很有用的：
-$$Ax + By + C = 0 \tag{2.15}$$
+$$
+Ax + By + C = 0 \tag{2.15}
+$$
 其中的$A, B, C$都是实数。
 假设我们已知直线上的两点$(x_0, y_0)和(x_1, y_1)$。那什么样的参数$A, B, C$才能描述这条直线呢？由于这些点都在直线上，因此它们都满足方程(2.15)：
 $$
@@ -506,7 +564,9 @@ Ax_0 + By_0 + C = 0 \\
 Ax_1 + By_1 + C = 0
 $$
 不幸的是，我们只有两个方程，但是却有三个未知数。这个问题出现的原因是我们可以将隐式方程和任意的乘数相乘。为了方便，我们将C设置成1，即：
-$$Ax + By + 1 = 0$$
+$$
+Ax + By + 1 = 0
+$$
 但是这里我们会遇到一个和截距式相同的问题，那就是当斜率无穷大的时候：穿过原点的直线需要满足$A(0) + B(0) + 1 = 0$，这个等式是不成立的。举个例子：以45度角穿过原点的直线可以被写成$x - y = 0$或者$y - x= 0$，甚至是$17y - 17x= 0$，但是它无法被写成$Ax + By + 1 = 0$的形式。
 当我们遇到类似这样的几何问题的时候，我们可以尝试将几何直觉来帮助理解。其中一个工具就是我们在章节2.5.2中讨论的梯度。对于直线$Ax + By + C = 0$而言，他的梯度是$(A,B)$，这是一个垂直于直线的向量（图2.29），指向了$Ax + By + C > 0$的区域。
 ![图2.29](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-2/202204302153005.png)
@@ -537,10 +597,12 @@ $$
 distance = k \sqrt{A^2 + B^2} \tag{2.18}
 $$
 对于点$(x, y) + k(A, B)$而言，函数$f(x, y) = Ax + By + C$的值为：
-$$\begin{aligned}
+$$
+\begin{aligned}
 f(x + kA, y + kB) &= Ax + kA^2 + By + kB^2 + C \\
 &=k(A^2 + B^2) \tag{2.19}
-\end{aligned}$$
+\end{aligned}
+$$
 这个方程可以化简是因为我们已知$(x, y)$在直线上，所以$Ax_0 + By_0 + C = 0$。联立方程(2.18)和(2.19)，我们可以看出，点$(a, b)$到直线$Ax_0 + By_0 + C = 0$的有向距离是：
 $$
 distance = \frac{f(a, b)}{\sqrt{A^2 + B^2}}
@@ -573,9 +635,13 @@ $$
 ### 2.5.3 三维隐式表面
 
 就像隐式方程可以在二维下定义曲线一样，它在三维中也可以用来定义表面。跟在二维中一样，隐式方程*隐式*地定义了一个在表面上地点集：
-$$f(x, y, z) = 0$$
+$$
+f(x, y, z) = 0
+$$
 表面上地任意一点$(x, y, z)$带入函数$f$都会使得结果为0；不在表面上的点带入等式产生的值不为0。你可以通过将一点带入函数$f$进行计算，来检查该点是否在表面上，或者通过函数的值来判断该点在表面的哪一侧，但是你缺无法显式的构建表面上的点。使用向量符号$\mathbf{p} = (x, y, z)$，我们可以将之前的方程改写成如下形式：
-$$f(\mathbf{p}) = 0$$
+$$
+f(\mathbf{p}) = 0
+$$
 
 ### 2.5.4 隐式表面的表面法线
 
@@ -588,7 +654,9 @@ $$
 ### 2.5.5 隐式平面
 
 举个例子，考虑穿过点$\mathbf{a}$的一个无限平面，它的表面法线是$\mathbf{n}$，我们可以用以下的隐式方程来描述这样的一个平面：
-$$(\mathbf{p - a) \cdot n} = 0 \tag{2.21}$$
+$$
+(\mathbf{p - a) \cdot n} = 0 \tag{2.21}
+$$
 ![图2.33](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-2/202205011417884.png)
 >**图2.33**：如果满足方程(2.2)，则任意一点$\mathbf{p}$都在经过点$\mathbf{a}$，法线为$\mathbf{n}$的平面上。
 
@@ -635,16 +703,20 @@ $$
 ### 2.5.6 二维参数化曲线
 
 一个*参数化*曲线被一个单独的参数控制，它可以被看作一个沿着曲线联系移动的索引。这样的曲线有如下形式：
-$$\left [ \begin{matrix}
+$$
+\left [ \begin{matrix}
 x \\
 y
 \end{matrix} \right ] =
 \left [ \begin{matrix}
 g(t) \\
 h(t)
-\end{matrix} \right ]$$
+\end{matrix} \right ]
+$$
 这里的$(x, y)$是曲线上的点，$t$是影响曲线的参数。对于一个给定的参数$t$，函数$g, h$会决定生成的点。对于连续的$g, h$而言，$t$的变化会相应的引起$x, y$的变化。即对于一个连续的参数$t$，生成的点会组成一条连续的曲线。这是一个很好的特性，因为我们可以使用参数$t$来显式生成曲线上的点。通常我们会将一个参数化曲线写成向量形式：
-$$\mathbf{p} = f(t)$$
+$$
+\mathbf{p} = f(t)
+$$
 其中的$f(t)$是一个返回向量结果的函数，即$f: \mathbb{R \mapsto R^2}$。这样的向量函数可以生成非常整洁的代码，在允许的情况下，应该尽可能地使用这种形式。
 我们可以将跟位置有关的曲线看成一个与时间有关的函数。这个曲线可以去任何地方，可以产生循环或者穿过自己。我们也可以认为曲线在任何一点上都具有速度。例如：点$\mathbf{p}(t)$在$t = -2$的时候移动缓慢，在$t = 2和t = 3$的时候移动迅速。这种“移动点”的术语经常被用来讨论参数化的曲线，即使曲线并没有在描述一个移动点。
 
@@ -665,7 +737,9 @@ $$
 >**图2.34**：一个穿过$\mathbf{p}_0，\mathbf{p}_1$的参数化直线，由$t \in [0,1]$定义的线段如图中加粗部分所示。
 
 由于$x, y$对应的公式是类似的，因此我们可以使用$\mathbf{p} = (x, y)$来将上述方程改写成向量形式（图2.34）：
-$$\mathbf{p} t = \mathbf{p}_0 + t(\mathbf{p}_1 - \mathbf{p}_0)$$
+$$
+\mathbf{p} t = \mathbf{p}_0 + t(\mathbf{p}_1 - \mathbf{p}_0)
+$$
 你可以从几何角度将其理解成：从点$\mathbf{p}_0$出发，然后由参数$t$决定向点$\mathbf{p}_1$前进一段距离。这种形式的一种特性是$\mathbf{p}(0) = \mathbf{p}_0, \mathbf{p}(1) = \mathbf{p}_1$。由于点随着参数$t$线性变化，因此$\mathbf{p}_0，\mathbf{p}_1$之间的$t$值衡量了各点之间的分数距离。$t < 0$的点在$\mathbf{p}_0$的“远”侧；$t > 1$的点在$\mathbf{p}_1$的“远”侧。
 参数化曲线也可以用一个点$\mathbf{o}$和一个向量$\mathbf{d}$来描述：
 $$
@@ -726,7 +800,9 @@ $$
 x = 2 + 7t, \\ y = 1 + 2t, \\ z = 3 - 5t.
 $$
 上面的方程组非常冗长，而且不易于代码实现，因此我们可以将其写成向量形式：
-$$\mathbf{p = o} + t\mathbf{d}$$
+$$
+\mathbf{p = o} + t\mathbf{d}
+$$
 在这个例子中，$\mathbf{o, d}$分别是：
 $$
 \mathbf{o} = (2, 1, 3), \\ \mathbf{d} = (7, 2, -5).
@@ -771,17 +847,25 @@ $$
 对于隐式表面，函数$f$的导数给出了表面的法线。对于参数化曲面，$\mathbf{p}$的导数也给出了表面的几何信息。
 考虑函数$\mathbf{q}(t) = \mathbf{p}(t, v_0)$，这个函数通过保持$v = v_0$的同时改变$u$，从而定义了一个参数化曲线，这个曲线叫做表面的*等参曲线*。函数$\mathbf{q}$的导数给出了曲线的一个切向量，由于等参曲线位于表面上，因此$\mathbf{q}^\prime$也位于表面上。因为曲线$\mathbf{q}$是通过改变$\mathbf{p}$的一个参数得到的，因此$\mathbf{q}^\prime$是$\mathbf{p}$对$u$的偏导，记作$\mathbf{p}_u$。同理，偏导数$\mathbf{p}_v$给出了常数$u$的等参曲线的切线，这是表面的第二个切向量。
 $\mathbf{p}$的导数，给出了表面上任意一点的两个切向量，该表面的法线可以通过切向量的叉乘获得：两个切向量的叉乘结果垂直于这两个切向量，即垂直于该表面。叉乘的右手定则决定了哪一边是表面的前侧或者外侧。该表面的法向量如下：
-$$\mathbf{n} = \mathbf{p}_u \times \mathbf{p}_v$$
+$$
+\mathbf{n} = \mathbf{p}_u \times \mathbf{p}_v
+$$
 该向量指向了表面的外部。
 
 ### 2.5.9 曲线和表面的总结
 
 二维空间中的隐式曲线和三维空间中的隐式表面的是由两个或者三个变量的标量函数定义的，即$f: \mathbb{R^2 \to R}$或$f: \mathbb{R^3 \to R}$，表面是由使得函数值为0的点构成的：
-$$S = \{\mathbf{p} | f(\mathbf{p}) = 0\}$$
+$$
+S = \{\mathbf{p} | f(\mathbf{p}) = 0\}
+$$
 二维或者三维空间中的参数化曲线是由只有一个变量的向量函数定义的，即$\mathbf{p}: D \subset \mathbb{R \to R^2}$或$\mathbf{p}: D \subset \mathbb{R \to R^3}$，曲线是由$t$在$D$上变化时扫出的点构成的：
-$$S = \{\mathbf{p}(t) | t \in D\}$$
+$$
+S = \{\mathbf{p}(t) | t \in D\}
+$$
 三维空间中的参数化曲面是由包含两个变量的向量函数定义的，即$\mathbf{p}: D \subset \mathbb{R^2 \to R^3}$，表面由定义域中的所有点$(u, v)$的像构成的：
-$$S = \{\mathbf{p}(t) | (u, v) \in D\}$$
+$$
+S = \{\mathbf{p}(t) | (u, v) \in D\}
+$$
 对于隐式的曲线和表面，其法向量由函数$f$的导数（梯度）给出，切向量可以通过由法向量构建的基底得到。
 对于参数化的曲线和表面，其切向量由函数$\mathbf{p}$的导数给出，法向量可以通过由切向量构建的基底得到。
 
@@ -805,14 +889,16 @@ $$
 ### 2.7.1 二维三角形
 
 如果我们使用点$\mathbf{a, b, c}$来定义二维平面上的一个三角形，我们首先可以计算出它的面积：
-$$\begin{aligned}
+$$
+\begin{aligned}
 area &= \frac{1}{2}
 \left | \begin{matrix}
 x_b - x_a & x_c - x_a \\
 y_b - y_a & y_c - y_a
 \end{matrix} \right | \\[2mm]
 &= \frac{1}{2}(x_ay_b + x_by_c + x_cy_a - x_ay_c - x_by_a - x_cy_b)
-\end{aligned} \tag{2.27}$$
+\end{aligned} \tag{2.27}
+$$
 上述公式的推导方法详见章节5.3。如果点$\mathbf{a, b, c}$是逆时针排列的，那么这个计算出的面积就是正的；反之是一个负数。
 通常在图形学中，我们希望在每个三角形定点上分配一个属性，如颜色，并在整个三角形上对该属性进行平滑的插值。有很多方法可以实现这一点，其中最简单有效的就是使用重心坐标。一种考虑重心坐标的方式是将其看作一个我们在章节2.4.2中简要讨论过的非正交坐标系。图2.36展示了这样的一个非正交坐标系，其中点$\mathbf{a}$是原点，点$\mathbf{c - a, b - a}$分别是坐标系的两个基向量。
 ![图2.36](https://morakito-blog.oss-cn-beijing.aliyuncs.com/Fundamentals-of-Computer-Graphics-4th/Chapter-2/202205021502194.png)
@@ -833,7 +919,9 @@ $$
 \mathbf{p}(\alpha, \beta, \gamma) = \alpha\mathbf{a} + \beta\mathbf{b} + \gamma\mathbf{c} \tag{2.29}
 $$
 方程中的参数有以下限制条件：
-$$\alpha + \beta + \gamma = 1 \tag{2.30}$$
+$$
+\alpha + \beta + \gamma = 1 \tag{2.30}
+$$
 重心坐标乍一看是一个很抽象，很不直观的概念，但是它是非常强大且方便的。城市中有两组平行的街道，但是相交街道之间的夹角并不是直角，在这样的场景下思考街道地址的工作方式有可能帮助你理解重心坐标的概念。生活中的很多坐标系的本质都是重心坐标，你将很快的适应它们。重心坐标对于平面上的所有点都有定义，它有一个非常棒的特性，那就是点$\mathbf{p}$在以点$\mathbf{a, b, c}$构成的三角形的内部的条件是当且仅当：
 $$
 0 < \alpha < 1, \\ 0 < \beta < 1, \\ 0 < \gamma < 1.
@@ -904,12 +992,18 @@ $$
 > **图2.40**：三角形的法向量垂直于三角形所在平面的所有向量，即垂直于三角形的三条边。
 
 三角形的法向量可以通过三角形所在平面上任意两个向量的叉乘获得（图2.40），使用三角形三边中的任意两个来作为向量计算法线是最方便的：
-$$\mathbf{n = (b - a) \times (c - a)} \tag{2.34}$$
+$$
+\mathbf{n = (b - a) \times (c - a)} \tag{2.34}
+$$
 这个法向量并不一定是单位向量，它遵循叉乘的右手定则。
 三角形的面积可以通过叉乘向量的长度获得：
-$$area = \frac{1}{2} \Vert \mathbf{n = (b - a) \times (c -a)} \Vert \tag{2.35}$$
+$$
+area = \frac{1}{2} \Vert \mathbf{n = (b - a) \times (c -a)} \Vert \tag{2.35}
+$$
 请注意这并不是一个带有符号的面积，因此它并不能直接用来计算重心坐标。但是我们可以观察到：一个具有“顺时针”顶点顺序的三角形的法向量，和同一平面上具有“逆时针”顶点顺序的三角形的法向量方向相反。回顾向量点乘的公式：
-$$\mathbf{a} \cdot \mathbf{b} = \Vert \mathbf{a} \Vert \Vert \mathbf{b} \Vert \cos{\phi} $$
+$$
+\mathbf{a} \cdot \mathbf{b} = \Vert \mathbf{a} \Vert \Vert \mathbf{b} \Vert \cos{\phi} 
+$$
 其中的$\phi$是两个向量之间的夹角。如果向量$\mathbf{a, b}$平行，那么$\cos \phi \pm 1$，这可以用来判断向量是否同向或者反向。因此，联立方程(2.33)，(2.34)和(2.35)，我们可以解得：
 $$
 \alpha = \frac{\mathbf{n} \ cdot \mathbf{n}_a}{\Vert \mathbf{n} \Vert^2} \\
